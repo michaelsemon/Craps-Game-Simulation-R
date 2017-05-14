@@ -9,14 +9,26 @@ passline.pass <- c(4,5,6,8,9,10,12)
 pass.bet <- 5
 stack <- 50 #starting cash
 
+#Shoot for the Point 
+point.roll <- function() {
+  while (dice.roll %in% !passline.win) {
+    
+  }
+    
+}
+
 #Simulate Pass Line Round 
 initial.roll <- function() {
-  if(dice.roll %in% passline.win) {
+  roll <- dice.roll
+  if(roll %in% passline.win) {
     stack <- stack + pass.bet
       print(stack)
+  } else if (roll %in% passline.craps) {
+      stack <- stack - pass.bet
   } else {
-    print('hi')
+      #Point Round Function
   }
 }
 
+print(initial.roll())
 
