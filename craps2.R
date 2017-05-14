@@ -2,12 +2,14 @@
 library(dplyr)
 library(tidyr)
 library(data.table)
+library(ggplot2)
 rm(list = ls())
 passline.win <- c(7,11)
 passline.craps <- c(2,3,12)
 passline.pass <- c(4,5,6,8,9,10,12)
-n <- 15 #number of games
-outcomes <- c()
+n <- 100 #number of games
+outcomes <- c() #results
+starting.budget <- 100
 
 #Simulate Craps 
 craps <- function() {
@@ -66,9 +68,17 @@ craps <- function() {
     
   }
   games <- c(1:n)  #Number of Games
-  outcomes <- data.frame(games,outcomes) #Create DF for Results
+  outcomes <- data.frame(games,outcomes) %>% mutate(total.winnings=starting.budget-cumsum(outcomes))
+  
   
   print(outcomes) #print results
+  
+  #Plot Results
+  pl <- ggplot(outcomes,aes(x=games,y=total.winnings))
+  
+  pl2 <- pl + geom_line() 
+  print(pl2)
+  #
   
 }
 
