@@ -4,12 +4,6 @@ passline.win <- c(7,11)
 passline.craps <- c(2,3,12)
 passline.pass <- c(4,5,6,8,9,10,12)
 
-
-
-#Shoot for the Point 
-
-# point.roll <- function(point) {}
-
 #Simulate Craps 
 craps <- function() {
   pass.bet <- 5 #Pass line bet
