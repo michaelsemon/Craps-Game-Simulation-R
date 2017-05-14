@@ -6,7 +6,7 @@ rm(list = ls())
 passline.win <- c(7,11)
 passline.craps <- c(2,3,12)
 passline.pass <- c(4,5,6,8,9,10,12)
-n <- 100 #number of games
+n <- 15 #number of games
 outcomes <- c()
 
 #Simulate Craps 
@@ -62,16 +62,13 @@ craps <- function() {
               }
             } #end of while loop
       }
-    #print(result)
     outcomes <- append(outcomes,result,after=length(outcomes)) 
-    outcomes <- data.frame(outcomes,games=1:n)
-    outcomes <- gather(outcomes,games,x)
+    
   }
-  #print(outcomes) # List of Outcomes generated from n games
-  #outcomes <- table(outcomes) %>% as.data.frame() %>%  data.frame(row)
-  #outcomes <- mutate(outcomes)
+  games <- c(1:n)  #Number of Games
+  outcomes <- data.frame(games,outcomes) #Create DF for Results
   
-  print(outcomes)
+  print(outcomes) #print results
   
 }
 
