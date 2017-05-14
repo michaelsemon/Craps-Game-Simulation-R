@@ -6,29 +6,35 @@ passline.win <- c(7,11)
 passline.craps <- c(2,3,11)
 passline.pass <- c(4,5,6,8,9,10,12)
 
-pass.bet <- 5
+pass.bet <- 5 #Pass line bet
 stack <- 50 #starting cash
 
 #Shoot for the Point 
-point.roll <- function() {
-  while (dice.roll %in% !passline.win) {
-    
-  }
-    
+point.roll <- function(point) {
+  roll <- dice.roll
+    if (roll == point) {
+        stack <- stack + pass.bet
+        print("hit the point")
+    } else if (roll %in% point.loss) {
+        stack <- stack - pass.bet
+    } else {
+        point.roll(point)
+    }
 }
 
-#Simulate Pass Line Round 
-initial.roll <- function() {
-  roll <- dice.roll
-  if(roll %in% passline.win) {
+
+#Simulate Craps 
+craps <- function() {
+  roll <- dice.roll  #pass roll
+  if(roll %in% passline.win) {  
     stack <- stack + pass.bet
-      print(stack)
   } else if (roll %in% passline.craps) {
       stack <- stack - pass.bet
   } else {
-      #Point Round Function
+      point <- roll
+      point.roll(point)
   }
 }
 
-print(initial.roll())
+
 
