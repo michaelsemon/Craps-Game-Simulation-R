@@ -3,6 +3,7 @@ library(dplyr)
 library(tidyr)
 library(data.table)
 library(ggplot2)
+library(ggthemes)
 rm(list = ls())
 passline.win <- c(7,11)
 passline.craps <- c(2,3,12)
@@ -76,9 +77,9 @@ craps <- function() {
   #Plot Results
   pl <- ggplot(outcomes,aes(x=games,y=total.winnings))
   
-  pl2 <- pl + geom_line() 
+  pl2 <- pl + geom_line() + theme_classic()
   print(pl2)
-  #
+  
   
 }
 
