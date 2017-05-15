@@ -76,11 +76,14 @@ craps <- function() {
   
   #Plot Results
   pl <- ggplot(outcomes,aes(x=games,y=total.winnings))
-  
   pl2 <- pl + geom_line() + theme_classic()
   print(pl2)
   
+  #multiple linear regression
+  fit <- lm(total.winnings ~ games + outcomes, data=outcomes)
+  print(fit)
   
 }
 
+#Run Program
 craps()
