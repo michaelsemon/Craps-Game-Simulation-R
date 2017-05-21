@@ -1,4 +1,4 @@
-# Global Simulations // Just Passline bets
+# Global Simulations // Passline + Odds Bet
 library(dplyr)
 library(tidyr)
 library(data.table)
