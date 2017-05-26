@@ -9,7 +9,7 @@ rm(list = ls())
 passline.win <- c(7,11)
 passline.craps <- c(2,3,12)
 passline.pass <- c(4,5,6,8,9,10,12)
-n <- 100 #number of games
+n <- 25 #number of games
 outcomes <- c() #results
 starting.budget <- 100
 pass.odds.bet <- c()
@@ -18,13 +18,13 @@ pass.odds.bet <- c()
 odds.bet <- function(point) {
   if (point == 4 | point == 10){
     pass.odds.bet <- 5
-    return(pass.odds.bet*(2/1))
+    return(pass.odds.bet*2*(2/1))
   } else if (point == 5 | point== 9){
     pass.odds.bet <- 6
-    return(pass.odds.bet*(3/2))
+    return(pass.odds.bet*2*(3/2))
   } else if (point == 6 | point == 8){
     pass.odds.bet <- 5
-    return(pass.odds.bet*(6/5))
+    return(pass.odds.bet*2*(6/5))
   }
 }
 
@@ -84,7 +84,7 @@ craps <- function() {
     
   }
   games <- c(1:n)  #Number of Games
-  outcomes <- data.frame(games,outcomes) %>% mutate(total.winnings=starting.budget-cumsum(outcomes))
+  outcomes <- data.frame(games,outcomes) %>% mutate(total.winnings=starting.budget+cumsum(outcomes))
   
   
   print(outcomes) #print results
@@ -102,3 +102,4 @@ craps <- function() {
 
 #Run Program
 craps()
+
